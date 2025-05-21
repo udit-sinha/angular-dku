@@ -14,6 +14,34 @@
 
   <!-- Main Content Area -->
   <div class="content">
+    <!-- API Data Display Section -->
+    <div class="api-data-section">
+      <h2>API Data</h2>
+
+      <!-- Loading indicator -->
+      <div *ngIf="isLoading" class="loading">
+        Loading data...
+      </div>
+
+      <!-- Error message -->
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+
+      <!-- Data display -->
+      <div *ngIf="!isLoading && !error" class="data-container">
+        <div class="data-card">
+          <h3>Data</h3>
+          <pre>{{ data | json }}</pre>
+        </div>
+
+        <div class="data-card">
+          <h3>Metadata</h3>
+          <pre>{{ metadata | json }}</pre>
+        </div>
+      </div>
+    </div>
+
     <router-outlet></router-outlet>
   </div>
 </div>
